@@ -1,52 +1,43 @@
 class Solution {
     public int romanToInt(String s) {
-           
-       int sum = 0;
-        int cur = translate(s.charAt(0));
-        for (int i =1; i < s.length(); i++){
+        int n = s.length();
+        int a[] = new int[n];
 
-            int next = translate(s.charAt(i));
-
-            if (next > cur){
-
-                sum -= cur;
-
+        for(int i=0;i<n;i++){
+            char ch = s.charAt(i);
+            if(ch == 'I'){
+                a[i] = 1;
             }
-             else 
-             
-             {
-
-                sum += cur;
+            else if(ch == 'V'){
+                a[i] = 5;
             }
-
-            cur = next;
+            else if(ch == 'X'){
+                a[i] = 10;
+            }
+            else if(ch == 'L'){
+                a[i] = 50;
+            }
+            else if(ch == 'C'){
+                a[i] = 100;
+            }
+            else if(ch == 'D'){
+                a[i] = 500;
+            }
+            else if(ch == 'M'){
+                a[i] = 1000;
+            }
         }
-
-        sum += cur;
-
-        return sum;
-    }
-    private int translate(char c)
-    {
-        switch(c)
-        {
-            case 'I':
-                return 1;
-            case 'V':
-                return 5;
-            case 'X':
-                return 10;
-            case 'L':
-                return 50;
-            case 'C':
-                return 100;
-            case 'D':
-                return 500;
-            case 'M':
-                return 1000;
-            default:
-                return 0;
+        int total = 0;
+        for(int i=0;i<n-1;i++){
+            if(a[i]<a[i+1]){
+                total -= a[i];
+            }
+            else{
+                total += a[i];
+            }
         }
+        total += a[n-1];
+        return total;
     }
 }
 
