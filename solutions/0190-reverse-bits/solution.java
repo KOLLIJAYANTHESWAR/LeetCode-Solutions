@@ -1,15 +1,12 @@
 class Solution {
     public int reverseBits(int n) {
-        String binofn = String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0');
-        StringBuilder sb = new StringBuilder(binofn);int sum=0, p=0;
-        sb.reverse();
-        String s = sb.toString();
-        for(int i = s.length()-1;i>=0;i--){
-            if(s.charAt(i)=='1'){
-                sum += Math.pow(2,p);
+        int result=0;
+        for(int i=31;i>=0;i--){
+            if((n&1)!=0){
+                result +=(1L<<i);
             }
-            p++;
+            n>>=1;
         }
-        return sum;
+        return result;
     }
 }
