@@ -3,6 +3,7 @@ class Solution {
         int n = s.length();
         int start=0;
         int maxlen=1;
+        //for odd Palindromic Substring
         for(int i=0;i<n;i++){
             int k=0;
             while((i-k)>=0&&(i+k)<n&&s.charAt(i-k)==s.charAt(i+k)){
@@ -13,7 +14,8 @@ class Solution {
                 maxlen=len;
                 start=i-(k-1);
             }
-        
+            //for even Palindromic Substring
+            //from comparizon of side by side index because that are no decimal indexs in java
             k=0;
             while((i-k)>=0&&(i+k+1)<n&&s.charAt(i-k)==s.charAt(i+k+1)){
                 k++;
